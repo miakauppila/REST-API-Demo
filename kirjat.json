@@ -1,0 +1,59 @@
+[
+    {
+        "id": 11,
+        "code": "018",
+        "category": "lastenkirjallisuus",
+        "title": "Ella ja kaverit, hiiohoi!",
+        "kirjailija": {
+            "sukunimi": "Parvela",
+            "etunimi": "Timo"
+        },
+        "julkaisutiedot": {
+            "kustantaja": "Tammi",
+            "vuosi": "2020"
+        }    
+    },
+    {
+        "id": 12,
+        "code": "055",
+        "category": "tietokirjat",
+        "title": "Lemmikiksi monirotuinen koira",
+        "kirjailija": {
+            "sukunimi": "Karppinen",
+            "etunimi": "Sanna"
+        },
+        "julkaisutiedot": {
+            "kustantaja": "Art House",
+            "vuosi": "2019"
+        }    
+    },
+    {
+        "id": 13,
+        "code": "015",
+        "category": "kaunokirjallisuus",
+        "title": "Kuun talo",
+        "kirjailija": {
+            "sukunimi": "Allen",
+            "etunimi": "Louise"
+        },
+        "julkaisutiedot": {
+            "kustantaja": "HarperCollins Nordic Ab",
+            "vuosi": "2019"
+        }    
+    },
+    {
+        "id": 14,
+        "code": "062",
+        "category": "jännityskirjallisuus",
+        "title": "Yhdeksäs kynttilä",
+        "kirjailija": {
+            "sukunimi": "Ford",
+            "etunimi": "Florence"
+        },
+        "julkaisutiedot": {
+            "kustantaja": "Tammi",
+            "vuosi": "1961"
+        }    
+    }
+
+]
