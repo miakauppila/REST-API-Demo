@@ -2,12 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="author" content="Mia Kauppila">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tietohaku</title>
     <style>
-        pre, textarea{
+        pre{
             font-size:14pt;
             font-weight: bold;
+        }
+        #tulos{
+            width: 1000px;
+            overflow: auto;
         }
         </style>
         <script src="rest.js"></script>
@@ -20,13 +25,13 @@
         <label><input type="radio" name="hakukriteeri" id="tunniste">Tunniste</label>
     </fieldset>
 
-    <p id="hakuehto">
-        <label></label>Jos haet kirjan tunnisteella, syötä:</label>
-        <input type="text" id="hakuehto" size="10">
+    <p id="haku">
+        <label></label>Jos haet tunnisteella, syötä kirjan id:</label>
+        <input type="text" id="hakuehto" size="10" pattern="[0-9]{1,4}">
     </p>
 
     <button id="btHae">Hae</button>
-    <div>
+    <div id=tulos>
         <h2>Tulos</h2>
         <pre id="tulosalue"></pre>
     </div>

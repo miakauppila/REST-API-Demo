@@ -2,19 +2,22 @@
 
 //huom. rakenne funktiolle, joka ajetaan automaattisesti
 (function(){
-    let kriteeri='kaikki';
+    let kriteeri;
+    let hakuehto;
     let tulosalue;
+    let uri;
 
     document.addEventListener('DOMContentLoaded', alusta);
     //DOMin lukeminen on hidas operaatio (vain alussa)
 
     function alusta() {
-        tulosalue=document.getElementById('tulosalue');
         document.getElementById('kaikki').addEventListener('click', valitse);
         document.getElementById('tunniste').addEventListener('click', valitse);
+        hakuehto=document.getElementById('hakuehto');
 
-        document.getElementById('btHae').addEventListener('click', laheta);
+        document.getElementById('btHae').addEventListener('click', haeTiedot);
 
+        tulosalue=document.getElementById('tulosalue');
     }
 
     function valitse(event){
@@ -22,17 +25,25 @@
         kriteeri= event.target.id;
     }
     //Huom. käytetään fetchiä
-    async function laheta(){
+    async function haeTiedot(){
         let optiot={
-            method: 'GET',
-            mode: 'cors',
+            method: 'get',
             headers:{
                 'Content-Type':'application/json'
-            }
+            },
+            mode: 'cors'     
         }
 
-        try{ //kun fetch corsilla niin optiot pakollinen
-            const vastaus=await fetch('localhost:3000/avoin/', optiot);
+        if(kriteeri==='kaikki'){
+            uri='http://localhost:3000/avoin/kirjat';
+        }
+        else{
+            uri=`http://localhost:3000/avoin/kirjat/${hakuehto.value}`;
+        }
+
+        try{ //fetch&cors tarvitsee optiot
+            const vastaus=await fetch(uri, optiot);
+            console.log(uri);
             const data=await vastaus.json();
             tulosalue.textContent=JSON.stringify(data);
         }

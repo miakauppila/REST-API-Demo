@@ -1,9 +1,11 @@
 [
     {
-        "id": 11,
+        "perustiedot":{
+            "id": 11,
+            "title": "Ella ja kaverit, hiiohoi!"
+        },
         "code": "018",
         "category": "lastenkirjallisuus",
-        "title": "Ella ja kaverit, hiiohoi!",
         "kirjailija": {
             "sukunimi": "Parvela",
             "etunimi": "Timo"
@@ -14,10 +16,12 @@
         }    
     },
     {
-        "id": 12,
+        "perustiedot":{
+            "id": 12,
+            "title": "Lemmikiksi monirotuinen koira"
+        },
         "code": "055",
         "category": "tietokirjat",
-        "title": "Lemmikiksi monirotuinen koira",
         "kirjailija": {
             "sukunimi": "Karppinen",
             "etunimi": "Sanna"
@@ -28,10 +32,12 @@
         }    
     },
     {
-        "id": 13,
+        "perustiedot":{
+            "id": 13,
+            "title": "Kuun talo"
+        },
         "code": "015",
         "category": "kaunokirjallisuus",
-        "title": "Kuun talo",
         "kirjailija": {
             "sukunimi": "Allen",
             "etunimi": "Louise"
@@ -42,10 +48,12 @@
         }    
     },
     {
-        "id": 14,
+        "perustiedot":{
+            "id": 14,
+            "title": "Yhdeksäs kynttilä"
+        },
         "code": "062",
         "category": "jännityskirjallisuus",
-        "title": "Yhdeksäs kynttilä",
         "kirjailija": {
             "sukunimi": "Ford",
             "etunimi": "Florence"

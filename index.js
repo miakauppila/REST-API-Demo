@@ -11,29 +11,31 @@ const port=process.env.PORT || 3000;
 const host=process.env.HOST || 'localhost';
 
 //simuloi tietokantaa
-const resurssit=require('./kirjat.json');
+const hae=require('./kirjavarasto.js');
+
+let hakutulos;
 
 app.use(cors());
 app.use(express.json()); //kaikki tieto lähetetään jsonina
 
 //REST API
 
-//palauttaa listan json-olioita, jossa id ja title
-app.get('/avoin/kirjat', (req, res)=>res.json(resurssit));
+//kun mennään juureen ilman reittiä
+app.get('/', (req,res)=>res.json({virhe:'komento puuttuu'}));
 
+//palauttaa listan kirjojen perustiedoista
+app.get('/avoin/kirjat', (req, res)=>kasitteleGet(req,res));
 
-//req.params olio:
-//haetaan
-//req.params.numero = 5;
-
-//:numero on req.params ja se(eli reitti) määritetään tässä
-app.route('/avoin/kirjat/:numero')
+//palauttaa yksittäisen kirjan tiedot
+app.route('/avoin/kirjat/:numero')//:numero on req.params olio ja reitti määritetään tässä
     .get((req,res)=>kasitteleGet(req,res))
-    .delete((req,res)=>kasitteleDelete(req,res));
+    .post((req,res)=>kasitteleMuut(req,res))
+    .put((req,res)=>kasitteleMuut(req,res))
+    .delete((req,res)=>kasitteleMuut(req,res));
 
 //huom. all viimeisenä. tähän mennään vain, jos aikaisemmat ei toteudu.
 app.all('*', (req,res)=>
-    res.json('resurssia ei löydy tai yksilöivä tieto/numero puuttuu')
+    res.json('resurssia ei löydy tai yksilöivä tieto/tunniste puuttuu')
 );
  
 palvelin.listen(port,host,()=>
@@ -41,11 +43,16 @@ palvelin.listen(port,host,()=>
 );
 
 function kasitteleGet(req,res) {
-    if(!resurssit[req.params.numero]){
-        res.json({}); //palautetaan tyhjä, jos ei löydy
+    if(req.params.numero){
+        hakutulos = hae(req.params.numero);
+        res.json(hakutulos);
     }
     else {
-        res.json(resurssit[req.params.numero]);
+        hakutulos=hae();
+        res.json(hakutulos);
     }
 }
 
+function kasitteleMuut(req,res){
+    res.json({virhe:'vain tietohaku on avoinna'});
+}
